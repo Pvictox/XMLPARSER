@@ -1,0 +1,42 @@
+===== ITENS =====
+
+1 => Classe 
+    Atributos = {
+        Nome (todas tem),
+        Writing se tiver,
+        Turnon, tem um print e um action. O print vem depois do action (lanterna -> acesa[action] -> LATERNA LIGADA (print)),
+        Status, se tiver
+    }
+
+2 => A respeito do turnon se o cara digitar 'turnon' considerar aquilo como uma action
+    ex: para a lanterna ser acesa ele não precisa digitar 'acender' ou 'ligue', se ele digitar 'turnon' ela liga
+
+
+*** OBS durante implementação ***
+
+1) hasAction pode ser uma flag para indicar se tem um turnon na tag
+    se tiver, inicializamos print e action. Essa flag vai servir na hora de mostrar o inventário
+
+2) Amostra do inventário: Mostrar lista de todos e dar a possibilidade de entrada
+para itens que tem turnon (flag hasAction)
+
+3) Inicialmente vai estar no objeto sala. Se a sala tiver Item então vai ser mostrado para o usuário pegar aquele itrem
+
+
+
+======= Container =======
+1 - Classe
+    Atributos = {
+        Item (pode ter),
+        name,
+        status (pode ter),
+        trigger -> 
+                tipo (único ou permanente),
+                codition ->
+                        {
+                            hasItem (has tag),
+                            object,
+                            owner = inventario
+                        }
+
+    }
