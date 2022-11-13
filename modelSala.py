@@ -1,6 +1,8 @@
 from operator import truediv
 from classDict import dictionary
 from item import Item
+from triggerSala import TriggerSala
+
 class Sala:
     def __init__(self, nome, descricao):
         self.nome = nome
@@ -9,6 +11,20 @@ class Sala:
         self.itens = []
         self.containers = []
         self.criaturas = []
+        self.trigger = dict()
+
+
+    def createTrigger(self, newTrigger):
+        self.trigger[newTrigger] = newTrigger
+        
+    def hasTrigger(self):
+        if (self.trigger.values != None):
+            return True
+        else:
+            return False
+            
+    def removeTrigger(self, trigger):
+        self.trigger.pop(trigger)
 
     def putAdjRoom(self,direcao, nomeSala):
         self.salasAdj[direcao] = nomeSala
@@ -19,11 +35,15 @@ class Sala:
     def getDescricao(self):
         return self.descricao
 
+    def getTriggers(self):
+         return self.trigger
+
     def getSalasADJ(self):
         for elementKey, elementValue in self.salasAdj.items():
             if(elementKey != None):
                 print("Direcao: ", elementKey, "|| Sala: ", elementValue)
 
+   
     def hasSalaAdj(self,key):
         if key in self.salasAdj.keys():
             return True

@@ -33,7 +33,8 @@ def printInfoSala(salaAtual):
                     print(" ---------- CRIATURA ----------")
                     for criat in salaAtual.getCriatura():
                         print(criat.getNome())
-                       
+    
+    
     print("=========================")
 
 
@@ -52,7 +53,13 @@ def actions(salaAtual):
         if (salaAtual.hasSalaAdj(dir) == False):
             print("Digite uma direcao valida")
         else:
-            Controller.applyMovemment(dir, salaAtual=salaAtual)
+            resultTrigger = Controller.checkRoomTrigger(dir, salaAtual=salaAtual)
+            if(resultTrigger == True):
+                Controller.applyMovemment(dir, salaAtual=salaAtual)
+            elif(resultTrigger != False):
+                print(resultTrigger)
+                time.sleep(1.2)
+
     elif (entrada == "2"):
         nomeItem = input("Digite o nome do item\n")
         if (salaAtual.hasItem()):

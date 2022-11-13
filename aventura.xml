@@ -45,7 +45,7 @@
      <name>bloquear</name>
      <status>bloqueado</status>
      <trigger>
-       <type>único</type>
+       <type>unico</type>
        <condition>
          <has>sim</has>
          <object>chave</object>
@@ -55,7 +55,7 @@
        <action>Atualizar bloqueio para desbloqueado</action>
      </trigger>
      <trigger>
-       <command>n</command>
+       <command>norte</command>
        <type>permanente</type>
        <condition>
          <status>bloqueado</status>
@@ -76,7 +76,7 @@
        <action>Excluir stormtrooper</action>
      </attack>
      <trigger>
-       <type>único</type>
+       <type>unico</type>
        <condition>
          <object>lanterna</object>
          <status>aceso</status>
@@ -125,7 +125,7 @@
      <name>gerador</name>
      <status>em</status>
      <trigger>
-       <type>único</type>
+       <type>unico</type>
        <condition>
          <has>sim</has>
          <object>jammer</object>
@@ -160,7 +160,7 @@
          <action>Excluir dianoga</action>
        </attack>
        <trigger>
-         <type>único</type>
+         <type>unico</type>
          <condition>
            <status>inativo</status>
            <object>granada</object>
@@ -174,7 +174,7 @@
    </creature>
    <trigger>
          <type>permanente</type>
-         <command>n</command>
+         <command>norte</command>
          <condition>
            <has>não</has>
            <object>escada</object>
@@ -219,7 +219,7 @@
          <action>Excluir Tarkin</action>
        </attack>
        <trigger>
-         <type>único</type>
+         <type>unico</type>
          <condition>
            <status>aceso</status>
            <object>sabre de luz</object>
@@ -236,7 +236,7 @@
        <status>fechado</status>
        <name>leitor de cartões</name>
        <trigger>
-           <type>único</type>
+           <type>unico</type>
            <condition>
              <has>sim</has>
              <object>leitor de cartões</object>
@@ -318,7 +318,7 @@
    <creature>
      <name>guarda</name>
      <trigger>
-       <type>único</type>
+       <type>unico</type>
        <condition>
            <object>blaster</object>
            <owner>inventário</owner>
@@ -344,7 +344,7 @@
          <action>Excluir imperador</action>
      </attack>
      <trigger>
-         <type>único</type>
+         <type>unico</type>
          <condition>
            <status>aceso</status>
            <object>sabre de luz</object>
@@ -361,7 +361,7 @@
        <status>fechado</status>
        <name>escape</name>
        <trigger>
-           <type>único</type>
+           <type>unico</type>
            <condition>
              <has>sim</has>
              <object>chave</object>
