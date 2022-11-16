@@ -5,7 +5,6 @@ import view
 from item import Item
 from container import Container
 from creature import Criatura
-from triggerSala import TriggerSala
 all_salas = dict()
 inventory = dict()
 def parseXML():
@@ -187,32 +186,6 @@ def parseXML():
                 objCriatura = Criatura(nome=name, vulnerabilidade=vulner, objectAttack=objectAttack, objectAttackCodition=objectAttackCondition, listActions=listAction, triggerItem=triggerItem, triggerCoditionItem=triggerItemCondition)
                 objSala.addCriaturaSala(objCriatura)
 
-        triggersSala = sala.getElementsByTagName("trigger")
-        if (triggersSala):
-            for t in triggersSala:
-                tipo = t.getElementsByTagName("type")[0].firstChild.nodeValue
-                comand = t.getElementsByTagName("command")
-                if (comand):
-                    comand = comand[0].firstChild.nodeValue
-                else:
-                    comand = ""
-                hasCodition = t.getElementsByTagName("condition")
-                if (hasCodition):
-                    hasCodition = hasCodition[0].firstChild.nodeValue
-
-                    itemTrigger = t.getElementsByTagName("object")
-                    if (itemTrigger):
-                        itemTrigger = itemTrigger[0].firstChild.nodeValue
-                    else:
-                        itemTrigger = ""                
-                printItem = t.getElementsByTagName("print")
-                if (printItem):
-                    printItem = printItem[0].firstChild.nodeValue
-                else:
-                    printItem = ""
-                
-                novoTrigger = TriggerSala(id=len(objSala.getTriggers()), tipo=tipo, comando=comand, item=itemTrigger, condition=hasCodition, print=printItem)
-                objSala.createTrigger(newTrigger=novoTrigger)
         all_salas[nomeSala] = objSala
 
 
@@ -293,22 +266,11 @@ def tryAttack(itemNecessario, codItem):
     else:
         return False, "Faltou item"
 
-def checkRoomTrigger(dir ,salaAtual):
-    if (salaAtual.hasTrigger() == False):
-        return False
-    else:
-
-        triggers = salaAtual.getTriggers()
-        for elementKey, elementValue in triggers.items():
-                comando = elementValue.getComando()
-                if (comando == dir):
-                    if (checkInventoryForItem(elementValue.getItem())):
-                        if (elementValue.getTipo() == "unico"):
-                            salaAtual.removeTrigger(elementValue)
-                            return True
-                    else:
-                        return elementValue.getPrint()
-                
+def applyMovemment(key, salaAtual):
+    
+    nomeSala = salaAtual.returnNameSalaADJ(key)
+    salaAtual = all_salas.get(nomeSala)
+    startGame(salaAtual=salaAtual, flagFirstStart=False)
 
 def returnSalas():
     return all_salas
